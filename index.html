@@ -1,197 +1,213 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>파밀리케어 서비스 점검 안내</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffe77a">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <title>파밀리케어 서비스 점검 안내</title>
 
-body{
-    background:#f4f7fb;
-    font-family:"Malgun Gothic","Noto Sans KR",sans-serif;
-    color:#333;
-}
+    <style>
+        :root {
+            --page-bg: #ffe77a;
+            --card-bg: #fff6cf;
+            --title-color: #2f84cc;
+            --text-color: #171717;
+            --border-color: rgba(255, 255, 255, 0.95);
+            --shadow-color: rgba(104, 83, 0, 0.12);
+        }
 
-.wrap{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:30px;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.card{
-    width:800px;
-    background:#fff;
-    border-radius:16px;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-    overflow:hidden;
-}
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
 
-.header{
-    background:#2b6cb0;
-    color:#fff;
-    padding:35px;
-    text-align:center;
-}
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
 
-.header h1{
-    font-size:34px;
-    margin-bottom:10px;
-}
+            background:
+                radial-gradient(
+                    circle at 10% 8%,
+                    rgba(255, 255, 255, 0.28),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 92% 88%,
+                    rgba(255, 255, 255, 0.20),
+                    transparent 32%
+                ),
+                var(--page-bg);
 
-.header p{
-    font-size:18px;
-    opacity:.95;
-}
+            color: var(--text-color);
 
-.content{
-    padding:45px 55px;
-    line-height:1.9;
-    font-size:18px;
-}
+            font-family:
+                "Pretendard",
+                "Noto Sans KR",
+                "Apple SD Gothic Neo",
+                "Malgun Gothic",
+                sans-serif;
 
-.notice{
-    margin:30px 0;
-    padding:22px;
-    border-left:6px solid #2b6cb0;
-    background:#eef5ff;
-    border-radius:8px;
-}
+            word-break: keep-all;
+        }
 
-.notice strong{
-    display:block;
-    margin-bottom:10px;
-    color:#1e4f8a;
-    font-size:20px;
-}
+        .notice-card {
+            width: min(100%, 450px);
+            min-height: calc(100vh - 16px);
 
-.info{
-    margin-top:40px;
-    border-top:1px solid #ddd;
-    padding-top:30px;
-}
+            padding: 84px 50px 72px;
 
-.info table{
-    width:100%;
-    border-collapse:collapse;
-}
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff8d8 0%,
+                    var(--card-bg) 100%
+                );
 
-.info th{
-    width:120px;
-    text-align:left;
-    padding:12px 0;
-    color:#555;
-}
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
 
-.info td{
-    padding:12px 0;
-}
+            box-shadow:
+                0 16px 38px var(--shadow-color);
+        }
 
-.footer{
-    background:#f7f7f7;
-    text-align:center;
-    color:#777;
-    padding:18px;
-    font-size:14px;
-}
+        .title {
+            margin: 0 0 34px;
 
-@media(max-width:768px){
+            color: var(--title-color);
 
-.card{
-    width:100%;
-}
+            font-size: clamp(34px, 8vw, 43px);
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.045em;
+        }
 
-.content{
-    padding:30px;
-    font-size:16px;
-}
+        .message {
+            margin: 0;
 
-.header h1{
-    font-size:28px;
-}
+            font-size: 16px;
+            line-height: 1.65;
+            letter-spacing: -0.018em;
+        }
 
-}
-</style>
+        .message p {
+            margin: 0 0 24px;
+        }
 
+        .message p:last-child {
+            margin-bottom: 0;
+        }
+
+        .period {
+            font-weight: 700;
+        }
+
+        .contact {
+            margin-top: 28px;
+            padding-top: 2px;
+
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .contact a {
+            display: block;
+            width: fit-content;
+
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact a:hover,
+        .contact a:focus-visible {
+            color: var(--title-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                align-items: stretch;
+            }
+
+            .notice-card {
+                width: 100%;
+                min-height: calc(100vh - 16px);
+
+                padding: 96px 50px 70px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .notice-card {
+                padding: 72px 34px 56px;
+            }
+
+            .message,
+            .contact {
+                font-size: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="wrap">
+<main class="notice-card" aria-labelledby="page-title">
 
-<div class="card">
+    <h1 class="title" id="page-title">
+        요청하신 페이지는<br>
+        서비스 준비중입니다.
+    </h1>
 
-<div class="header">
-<h1>서비스 점검 안내</h1>
-<p>FamilyCare Maintenance Notice</p>
-</div>
+    <section class="message" aria-label="서비스 점검 안내">
 
-<div class="content">
+        <p>
+            노후화된 장비 교체 및 시스템 환경 재정비를 위해<br>
+            파밀리케어 서비스는
+            <span class="period">
+                2026년 7월 22일(수)부터<br>
+                2026년 7월 29일(수)까지
+            </span>
+            일시적으로 서비스를<br>
+            중단합니다.
+        </p>
 
-안녕하세요.<br><br>
+        <p>
+            보다 안정적인 서비스를 제공하기 위해 신속하게<br>
+            시스템 재정비를 완료하고<br>
+            정상 서비스로 다시 찾아뵙겠습니다.
+        </p>
 
-노후화된 장비 교체 및 시스템 환경 재정비를 위해
-<strong>파밀리케어 서비스는 2026년 7월 22일(수)부터
-2026년 7월 29일(수)까지 일시적으로 서비스를 중단합니다.</strong>
+        <p>
+            서비스 이용에 불편을 드려 진심으로 죄송합니다.
+        </p>
 
-<div class="notice">
+        <p>
+            감사합니다.
+        </p>
 
-<strong>서비스 점검 일정</strong>
+    </section>
 
-2026년 7월 22일(수) ~ 2026년 7월 29일(수)
+    <footer class="contact" aria-label="문의처">
 
-</div>
+        <a href="mailto:stmlig@familidata.co.kr">
+            stmlig@familidata.co.kr
+        </a>
 
-보다 안정적인 서비스를 제공하기 위해
-신속하게 시스템 재정비를 완료하고
-정상 서비스로 다시 찾아뵙겠습니다.
+        <a href="tel:0313410534">
+            031-341-0534
+        </a>
 
-<br><br>
+    </footer>
 
-서비스 이용에 불편을 드려 진심으로 죄송합니다.
-
-<br><br>
-
-감사합니다.
-
-<div class="info">
-
-<table>
-
-<tr>
-<th>문의 메일</th>
-<td>
-<a href="mailto:stmlig@familidata.co.kr">
-stmlig@familidata.co.kr
-</a>
-</td>
-</tr>
-
-<tr>
-<th>문의 전화</th>
-<td>031-341-0534</td>
-</tr>
-
-</table>
-
-</div>
-
-</div>
-
-<div class="footer">
-© 2026 FamilyCare. All Rights Reserved.
-</div>
-
-</div>
-
-</div>
+</main>
 
 </body>
 </html>
